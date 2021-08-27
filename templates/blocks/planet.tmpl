@@ -52,6 +52,8 @@
   height:        "300px",
   starsCount:    100,
   stars:         fcf.argProg(),
+  feq:           60,
+  period:        10,
 }
 
 //~TEMPLATE
@@ -68,35 +70,33 @@
       <div class="planet-sun"></div>
     </div>
   </div>
-  @{{ render.template("+earth"); }}@
+  @{{ render.template("+earth", {feq: fcf.argRef("feq"), period: fcf.argRef("period") }); }}@
+  <div class="planet-controls-container">
+    <p>
+      <div class="planet-title-control">Period: </div>@{{ render.template("@controls:int-edit", {value: fcf.argRef("period"), min: 1, width: 80})}}@
+    </p>
+    <p>
+      <div class="planet-title-control">Frequency: </div>@{{ render.template("@controls:int-edit", {value: fcf.argRef("feq"), min: 1, width: 80})}}@
+    </p>
+  </div>
 </div>
 
 //~OPTIONS earth
 {
-  // Automatic template update mode when the argument changes.
-  // Acceptable values:
-  //   true|"all" - The update is performed on any change
-  //   "external" - The update is performed only if the external template was the initiator of the change.
-  //   false      - The template is not being updated
-  // The option can be overridden by the fcfAutoUpdate template argument.
-  // Default: false
   autoUpdate: true,
 }
 
 //~ARGUMENTS earth
 {
+  fcfClassInner: "planet-earth-container",
+  fcfStyleInner: fcf.argVal("z-index: @{{args.topPlanet > 0.5 ? 2 : 0}}@"),
   time:          0,
   feq:           60,
-  period:        20000,
+  period:        10,
+  leftPlanet:    fcf.argVal("@{{(Math.sin(Math.PI * args.time / args.period / 1000 * 2) + 1) / 2 * 0.5 + 0.25}}@"),
+  topPlanet:     fcf.argVal("@{{(Math.cos(Math.PI * args.time / args.period / 1000 * 2) + 1) / 2 * 0.5 + 0.25}}@"),
+
 }
 
 //~TEMPLATE earth
-%{{
-  let leftPlanet = (Math.sin(Math.PI * args.time / args.period * 2) + 1) / 2 * 0.5 + 0.25;
-  let topPlanet  = (Math.cos(Math.PI * args.time / args.period * 2) + 1) / 2 * 0.5 + 0.25;
-}}%
-<div class="planet-earth-container" style="z-index: @{{topPlanet > 0.5 ? 100 : 0}}@">
-  <div class="planet-earth-container-item">
-    <div class="planet-earth" style="left: @{{100*leftPlanet}}@%; top: @{{100*topPlanet}}@%;"></div>
-  </div>
-</div>
+<div class="planet-earth" style="left: @{{100*args.leftPlanet}}@%; top: @{{100*args.topPlanet}}@%;"></div>
