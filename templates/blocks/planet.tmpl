@@ -11,7 +11,7 @@
   //   false      - The template is not being updated
   // The option can be overridden by the fcfAutoUpdate template argument.
   // Default: false
-  autoUpdate: true,
+  autoUpdate: false,
 
   // If true, the rendering is performed on the client side.
   // Acceptable values:
@@ -50,18 +50,17 @@
   fcfStyleInner: fcf.argVal("display: block; overflow: hidden; width: @{{args.width}}@; height: @{{args.height}}@"),
   width:         "100%",
   height:        "300px",
-  time:          0,
-  feq:           20,
-  period:        10000,
   starsCount:    100,
-  stars:         fcf.argProg({modify: true}),
+  stars:         fcf.argProg(),
 }
 
 //~TEMPLATE
 <div class="planet-container">
   <div class="star-container">
   %{{ for(let i = 0; i < args.stars.length; ++i) { }}%
-    <div class="star" style="left:@{{args.stars[i].left}}@%; top: @{{args.stars[i].top}}@%;"></div>
+    <div
+      class="star"
+      style="left:@{{args.stars[i].left}}@%; top: @{{args.stars[i].top}}@%; animation-duration: @{{args.stars[i].duration}}@s;  animation-delay: @{{args.stars[i].delay}}@s;"></div>
   %{{ } }}%
   </div>
   <div class="planet-sun-container">
@@ -69,13 +68,35 @@
       <div class="planet-sun"></div>
     </div>
   </div>
-  %{{
-    let leftPlanet = (Math.sin(Math.PI * args.time / args.period * 2) + 1) / 2 * 0.5 + 0.25;
-    let topPlanet  = (Math.cos(Math.PI * args.time / args.period * 2) + 1) / 2 * 0.5 + 0.25;
-  }}%
-  <div class="planet-earth-container" style="z-index: @{{topPlanet > 0.5 ? 100 : 0}}@">
-    <div class="planet-earth-container-item">
-      <div class="planet-earth" style="left: @{{100*leftPlanet}}@%; top: @{{100*topPlanet}}@%;"></div>
-    </div>
+  @{{ render.template("+earth"); }}@
+</div>
+
+//~OPTIONS earth
+{
+  // Automatic template update mode when the argument changes.
+  // Acceptable values:
+  //   true|"all" - The update is performed on any change
+  //   "external" - The update is performed only if the external template was the initiator of the change.
+  //   false      - The template is not being updated
+  // The option can be overridden by the fcfAutoUpdate template argument.
+  // Default: false
+  autoUpdate: true,
+}
+
+//~ARGUMENTS earth
+{
+  time:          0,
+  feq:           60,
+  period:        20000,
+}
+
+//~TEMPLATE earth
+%{{
+  let leftPlanet = (Math.sin(Math.PI * args.time / args.period * 2) + 1) / 2 * 0.5 + 0.25;
+  let topPlanet  = (Math.cos(Math.PI * args.time / args.period * 2) + 1) / 2 * 0.5 + 0.25;
+}}%
+<div class="planet-earth-container" style="z-index: @{{topPlanet > 0.5 ? 100 : 0}}@">
+  <div class="planet-earth-container-item">
+    <div class="planet-earth" style="left: @{{100*leftPlanet}}@%; top: @{{100*topPlanet}}@%;"></div>
   </div>
 </div>

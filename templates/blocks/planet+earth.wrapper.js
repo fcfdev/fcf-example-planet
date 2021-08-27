@@ -1,5 +1,5 @@
 fcf.module({
-  name:         "templates/blocks/planet.wrapper.js",
+  name:         "templates/blocks/planet+earth.wrapper.js",
   dependencies: ["fcf:NClient/Wrapper.js"],
   module: function(Wrapper){
     return class WrapperEx extends Wrapper{

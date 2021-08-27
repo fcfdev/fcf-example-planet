@@ -13,11 +13,21 @@
   display: block;
 }
 
+@keyframes star {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 .star{
   background: #fff;
-  width: 3px;
-  height: 3px;
+  width: 2px;
+  height: 2px;
   position: absolute;
+  animation: star ease alternate infinite;
 }
 
 .planet-sun-container {

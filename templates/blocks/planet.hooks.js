@@ -40,8 +40,10 @@ fcf.module({
           let stars = [];
           for(let i = 0; i < a_taskInfo.args.starsCount; ++i) {
             stars.push({
-              left: 100*Math.random(),
-              top: 100*Math.random()
+              left:     100*Math.random(),
+              top:      100*Math.random(),
+              duration: 2+8*Math.random(),
+              delay:    2*Math.random(),
             });
           }
           return stars;
