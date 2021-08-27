@@ -1,0 +1,68 @@
+.planet-container{
+  border: 1px solid #aaa;
+  background: linear-gradient(to bottom, #3b2645, #67668f 75%, #201145 100%);
+  width: 100%;
+  height: 100%;
+}
+
+.star-container{
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  display: block;
+}
+
+.star{
+  background: #fff;
+  width: 3px;
+  height: 3px;
+  position: absolute;
+}
+
+.planet-sun-container {
+  top: -100%;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  position: relative;
+  display: table;
+  vertical-align: middle;
+  z-index: 50;
+}
+
+.planet-sun-container-item {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.planet-sun{
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  background: rgb(241, 255, 44);
+  border: 3px solid rgb(255, 245, 110);
+}
+
+.planet-earth-container {
+  top: -200%;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.planet-earth-container-item {
+}
+
+.planet-earth{
+  display: inline-block;
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  margin-top: -50px;
+  margin-left: -50px;
+  border-radius: 50px;
+  background: linear-gradient(45deg, #1a7c34, #12bc4c);
+  border: 3px solid rgb(48 165 68);
+}

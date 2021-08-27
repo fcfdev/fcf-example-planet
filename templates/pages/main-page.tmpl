@@ -1,0 +1,53 @@
+//~OPTIONS
+{
+  // Basic inheritance template
+  // Default: undefined
+  extends: ":templates/super/page.tmpl",
+
+  // Automatic template update mode when the argument changes.
+  // Acceptable values:
+  //   true|"all" - The update is performed on any change
+  //   "external" - The update is performed only if the external template was the initiator of the change.
+  //   false      - The template is not being updated
+  // Default: false
+  autoUpdate: false,
+
+  // If true, the rendering is performed on the client side.
+  // Acceptable values:
+  //   true|"all"   - Rendering is done on the client, when done on the browser side
+  //   "update"     - The first render is done on the server side and the update is on the client side
+  //   "update_np"  - The first render is done on the server side and the update is on the client side.
+  //                  Parameters of the programmable type are not recalculated.
+  //   false        - Rendering is always done on the server side
+  // This parameter can be overridden by the fcfClientRendering template argument, but only if the option is true.
+  // Default: false
+  clientRendering: false,
+
+  // Additional JS & CSS files to connect (JS files are also connected on the server side)
+  // Default: []
+  include: [],
+
+  // Plug-in additional JS & CSS files on the client side
+  // Default: []
+  clientInclude: [],
+
+  // If the parameter is false, the template is not wrapped in a container,
+  // a wrapper is not created for it, and its arguments are not available on the client.
+  // Default: true
+  wrapper: true,
+
+  // The template is displayed when the template is locked or false,
+  // then the lock is performed only by the transparent container.
+  // If the option is true, then @controls:lock is used.
+  // The option can be overridden by the fcfLockTemplate template argument.
+  // Default: true
+  lockTemplate: true
+}
+
+//~ARGUMENTS body
+{
+
+}
+
+//~TEMPLATE body
+@{{ render.template("templates/blocks/planet.tmpl") }}@

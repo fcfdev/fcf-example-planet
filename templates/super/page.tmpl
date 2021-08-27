@@ -1,0 +1,91 @@
+//~OPTIONS
+{
+  // Basic inheritance template
+  // Default: undefined
+  // extends:"<super_template.tmpl>",
+
+  // Automatic template update mode when the argument changes.
+  // Acceptable values:
+  //   true|"all" - The update is performed on any change
+  //   "external" - The update is performed only if the external template was the initiator of the change.
+  //   false      - The template is not being updated
+  // Default: false
+  autoUpdate: false,
+
+  // If true, the rendering is performed on the client side.
+  // Acceptable values:
+  //   true|"all"   - Rendering is done on the client, when done on the browser side
+  //   "update"     - The first render is done on the server side and the update is on the client side
+  //   "update_np"  - The first render is done on the server side and the update is on the client side.
+  //                  Parameters of the programmable type are not recalculated.
+  //   false        - Rendering is always done on the server side
+  // This parameter can be overridden by the fcfClientRendering template argument, but only if the option is true.
+  // Default: false
+  clientRendering: false,
+
+  // Additional JS & CSS files to connect (JS files are also connected on the server side)
+  // Default: []
+  include: [],
+
+  // Plug-in additional JS & CSS files on the client side
+  // Default: []
+  clientInclude:[":templates/css/styles.css"],
+
+  // If the parameter is false, the template is not wrapped in a container,
+  // a wrapper is not created for it, and its arguments are not available on the client.
+  // Default: true
+  wrapper: true,
+
+  // The template is displayed when the template is locked or false,
+  // then the lock is performed only by the transparent container.
+  // If the option is true, then @controls:lock is used.
+  // The option can be overridden by the fcfLockTemplate template argument.
+  // Default: true
+  lockTemplate: true
+}
+
+//~ARGUMENTS
+{
+
+}
+
+//~TEMPLATE
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  @{{ render.header(); }}@
+</head>
+<body>
+  <div class="header">
+    <div class="header-title">
+      <a href="/">!{{FCF Application}}!</a>
+    </div>
+    <div class="header-controls">
+      <div class="header-controls-line">
+        %{{ if (fcf.getContext().session.user.user) { }}%
+          <span class="header-control">!{{User}}!: @{{fcf.getContext().session.user.user}}@</span>
+          %{{ if (fcf.getContext().session.user.roles.root) { }}%
+            <span class="header-control"><a href="/fcfpackages/fcfManagement">!{{System settings}}!</a></span>
+          %{{ } }}%
+          <span class="header-control"><a fcfEventClick="wrapper.onLogout()">!{{Logout}}!</a></span>
+        %{{ } else { }}%
+          %{{ if (fcf.application.getConfiguration().fcfSimpleAuthorization_enableRegistration) { }}%
+          <span class="header-control"><a fcfEventClick="wrapper.onRegistration()">!{{Registration}}!</a></span>
+          %{{ } }}%
+          <span class="header-control"><a fcfEventClick="wrapper.onSingin()">!{{Sign in}}!</a></span>
+        %{{ } }}%
+      </div>
+      <div class="header-controls-line">
+        @{{render.template("@controls:language-selector", {fcfClass: "language-selector-header"}); }}@
+      </div>
+    </div>
+    <div class="header-clear"></div>
+  </div>
+  <div class="body">
+    @{{ render.template({template: "+body"}); }}@
+  </div>
+</body>
+</html>
+
+//~TEMPLATE body
+<h4>Main body container</h4>

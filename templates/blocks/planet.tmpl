@@ -1,0 +1,81 @@
+//~OPTIONS
+{
+  // Basic inheritance template
+  // Default: undefined
+  // extends:"<super_template.tmpl>",
+
+  // Automatic template update mode when the argument changes.
+  // Acceptable values:
+  //   true|"all" - The update is performed on any change
+  //   "external" - The update is performed only if the external template was the initiator of the change.
+  //   false      - The template is not being updated
+  // The option can be overridden by the fcfAutoUpdate template argument.
+  // Default: false
+  autoUpdate: true,
+
+  // If true, the rendering is performed on the client side.
+  // Acceptable values:
+  //   true|"all"   - Rendering is done on the client, when done on the browser side
+  //   "update"     - The first render is done on the server side and the update is on the client side
+  //   "update_np"  - The first render is done on the server side and the update is on the client side.
+  //                  Parameters of the programmable type are not recalculated.
+  //   false        - Rendering is always done on the server side
+  // This parameter can be overridden by the fcfClientRendering template argument, but only if the option is true.
+  // Default: false
+  clientRendering: true,
+
+  // Additional JS & CSS files to connect (JS files are also connected on the server side)
+  // Default: []
+  include: [],
+
+  // Plug-in additional JS & CSS files on the client side
+  // Default: []
+  clientInclude: ["planet.css"],
+
+  // If the parameter is false, the template is not wrapped in a container,
+  // a wrapper is not created for it, and its arguments are not available on the client.
+  // Default: true
+  wrapper: true,
+
+  // The template is displayed when the template is locked or false,
+  // then the lock is performed only by the transparent container.
+  // If the option is true, then @controls:lock is used.
+  // The option can be overridden by the fcfLockTemplate template argument.
+  // Default: true
+  lockTemplate: false
+}
+
+//~ARGUMENTS
+{
+  fcfStyleInner: fcf.argVal("display: block; overflow: hidden; width: @{{args.width}}@; height: @{{args.height}}@"),
+  width:         "100%",
+  height:        "300px",
+  time:          0,
+  feq:           20,
+  period:        10000,
+  starsCount:    100,
+  stars:         fcf.argProg({modify: true}),
+}
+
+//~TEMPLATE
+<div class="planet-container">
+  <div class="star-container">
+  %{{ for(let i = 0; i < args.stars.length; ++i) { }}%
+    <div class="star" style="left:@{{args.stars[i].left}}@%; top: @{{args.stars[i].top}}@%;"></div>
+  %{{ } }}%
+  </div>
+  <div class="planet-sun-container">
+    <div class="planet-sun-container-item">
+      <div class="planet-sun"></div>
+    </div>
+  </div>
+  %{{
+    let leftPlanet = (Math.sin(Math.PI * args.time / args.period * 2) + 1) / 2 * 0.5 + 0.25;
+    let topPlanet  = (Math.cos(Math.PI * args.time / args.period * 2) + 1) / 2 * 0.5 + 0.25;
+  }}%
+  <div class="planet-earth-container" style="z-index: @{{topPlanet > 0.5 ? 100 : 0}}@">
+    <div class="planet-earth-container-item">
+      <div class="planet-earth" style="left: @{{100*leftPlanet}}@%; top: @{{100*topPlanet}}@%;"></div>
+    </div>
+  </div>
+</div>

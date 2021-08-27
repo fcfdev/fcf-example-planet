@@ -1,0 +1,182 @@
+{
+  //en  Number of the local server management port (int)
+  //ru  Номер локального порта управления сервером (int)
+  "serverControlPort": 3731,
+
+  //en  Prefix of the log file path (string)
+  //ru  Префикс пути к файлу логов (string)
+  "logFile": "log/server-log-",
+
+  //en  The logging level (enum:[err|wrn|log|trc])
+  //ru  Уровень логирования (enum:[err|wrn|log|trc])
+  "logLevel": "log",
+
+  //en  The life time of the log file of the server (days)
+  //ru  Время жизни файла лога сервера (days)
+  "logLifeTime": 30,
+
+  //en  User under which FCF processes are started. If the field is an empty string, then the process is executed from the current user.
+  //ru  Имя пользователя от которого будет запускаться приложение FCF. Если поле является пустой строкой то процесс выполняется от текущего пользователя.
+  "user":            "",
+
+  //en  User password. Used only for Windows systems
+  //ru  Пароль пользователя. Используется только для Windows систем
+  "password":        "",
+
+  //en  Server slave state. Runs as master by default (default:false) (boolean)
+  //ru  Состояние подчиненного состояния сервера. По умолчанию запускается как ведущий (default:false) (boolean)
+  "slave": false,
+
+  //en  Length of the request queue
+  //ru  Длина очереди запросов
+  "listenQueue": 128,
+
+  //en  The value of keep-alive http requests
+  //ru  Значение keep-alive http запросов
+  "keepAliveTimeout": 5,
+
+  //en  Maximum waiting time for receiving and sending a client packet (sec)
+  //ru  Максимальное время ожидания получения и отправки пакета клиента (сек)
+  "clientSocketTimeout": 5,
+
+  //en  Maximum waiting time for receiving a request from the client (sec)
+  //ru  Максимальное время ожидания получения запроса от клиента (сек)
+  "maxRequestTimeout": 300,
+
+  //en  Maximum waiting time for receiving and sending a server packet (sec)
+  //ru  Максимальное время ожидания получения и отправки пакета сервера (сек)
+  "serverSocketTimeout": 5,
+
+  //en  Maximum time to wait for a request to be sent from the server (sec)
+  //ru  Максимальное время ожидания отправки запроса от сервера (сек)
+  "maxResponseTimeout": 300,
+
+  //en  Maximum time to wait for a child process to start (sec)
+  //ru  Максимальное время ожидания запуска дочернего процесса (сек)
+  "startTimeout": 600,
+
+  //en  Maximum waiting time for a child process to stop (sec)
+  //ru  Максимальное время ожидания остановки дочернего процесса (сек)
+  "stopTimeout": 30,
+
+
+  //en The configuration of endpoints
+  //ru Конфигурация конечных точек
+  "endpoints": [
+    {
+      //en  User under which FCF processes are started
+      //ru  Имя пользователя от которого будет запускаться приложение FCF
+      //"user":            "www-data",
+
+      //en  Used only for Windows systems
+      //ru  Используется только для Windows систем
+      //"password":        "",
+
+      //en  Length of the request queue
+      //ru  Длина очереди запросов
+      //"listenQueue": 128,
+
+      //en  Maximum waiting time for receiving and sending a client packet (sec)
+      //ru  Максимальное время ожидания получения и отправки пакета клиента (сек)
+      //"clientSocketTimeout": 5,
+
+      //en  Maximum waiting time for receiving a request from the client (sec)
+      //ru  Максимальное время ожидания получения запроса от клиента (сек)
+      //"maxRequestTimeout": 300,
+
+      //en  Maximum waiting time for receiving and sending a server packet (sec)
+      //ru  Максимальное время ожидания получения и отправки пакета сервера (сек)
+      //"serverSocketTimeout": 5,
+
+      //en  Maximum time to wait for a request to be sent from the server (sec)
+      //ru  Максимальное время ожидания отправки запроса от сервера (сек)
+      //"maxRequestTimeout": 300,
+
+      //en  Maximum time to wait for a child process to start (sec)
+      //ru  Максимальное время ожидания запуска дочернего процесса (сек)
+      //"startTimeout": 600,
+
+      //en  Maximum waiting time for a child process to stop (sec)
+      //ru  Максимальное время ожидания остановки дочернего процесса (сек)
+      //"stopTimeout": 30,
+
+      //en  The server interface address for IPv4, if omitted, must contain the value "none" (string)
+      //ru  Адрес интерфейса сервера для IPv4, если не задан должен содержать значение "none" (string)
+      "bind4": "",
+
+      //en  The server interface address for IPv6, if omitted, must contain the value "none" (string)
+      //ru  Адрес интерфейса сервера для IPv6, если не задан должен содержать значение "none" (string)
+      "bind6": "::",
+
+      //en  Number of the listening port (int)
+      //ru  Номер прослушиваемого порта (int)
+      "port": 8080,
+
+      //en  Handler parameters
+      //ru  Параметры обработчиков
+      "handlers": [{
+
+        //en  Maximum time to wait for a child process to start (sec)
+        //ru  Максимальное время ожидания запуска дочернего процесса (сек)
+        //"startTimeout": 30,
+
+        //en  Maximum waiting time for a child process to stop (sec)
+        //ru  Максимальное время ожидания остановки дочернего процесса (сек)
+        //"stopTimeout": 30,
+
+        //en  The host specified in the HTTP request that the handler will respond to. If omitted, it must contain an empty string. (string)
+        //ru  Хост указанный в HTTP запросе на который будет отвечать обработчик. Если не задан должен содержать пустую строку. (string)
+        "host": "",
+
+        //en  URL the path specified in the HTTP request that the handler will respond to. If omitted, it must contain an empty string. (string)
+        //ru  URL путь указанный в HTTP запросе на который будет будет отвечать обработчик. Если не задан должен содержать пустую строку. (string)
+        "path": "",
+
+        //en  The number of concurrently running processes of handlers of constant work
+        //en  without protection of memory leaks. The minimum value 2 (int)
+        //ru  Количество одновременно запущенных процессов обработчиков постоянной работы
+        //ru  без защиты от утечек памяти. (int)
+        "processes": 1,
+
+        //en  Number of concurrently running handler processes with memory leak protection.
+        //en  Values 0 or greater than 1 (int)
+        //ru  Количество одновременно запущенных процессов обработчиков
+        //ru  с защитой от утечек памяти . Значения 0 или больше 1 (int)
+        "processesLeakProtection": 1,
+
+        //en  The FCF app. JavaScript script to run (string)
+        //ru  Приложение FCF. Запускаемый скрипт JavaScript  (string)
+        "script": "fcf-example-planet.js",
+
+        //en  An array of arrays containing arrays of NDOEJS options for each process
+        //ru  Массив массивов содержащий массивы опций NDOEJS по каждому процессу
+        "nodeOptions": [[], [], [], []],
+
+        //en  Maximum allowable memory size used by a handler process for processes with memory leak protection
+        //en  If there is no limit set to 0 (int MB)
+        //ru  Максимально допустимый размер памяти используемый процессом обработчика для процессов с защитой от утечек памяти
+        //ru  Если ограничения нет равет 0 (int MB)
+        "maxMemoryLeakProtection": 150,
+
+        //en  Maximum allowed memory size used by the handler process. If there is no limit set to 0 (int MB)
+        //ru  Максимально допустимый размер памяти используемый процессом обработчика. Если ограничения нет равет 0 (int MB)
+        "maxMemory": 150,
+
+        //en  Array of control message transmission ports.
+        //en  The array is automatically expanded to the size specified in (process+processesLeakProtection)*2, but must contain at least one element (array)
+        //ru  Массив портов передачи управляющих сообщений.
+        //ru  Массив автоматически дозаполняется до размера указанного в (process+processesLeakProtection)*2, но должен содержать хотябы один элемент (array)
+        "dataPorts": [3070],
+
+        //en  Array of data transfer ports.
+        //en  The array is automatically expanded to the size specified in (process+processesLeakProtection)*2, but must contain at least one element (array)
+        //ru  Массив портов передачи данных.
+        //ru  Массив автоматически дозаполняется до размера указанного в (process+processesLeakProtection)*2, но должен содержать хотябы один элемент (array)
+        "controlPorts": [3570]
+
+      }]
+
+    }
+  ]
+
+}
