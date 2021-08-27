@@ -7,6 +7,7 @@ An example of using templates in the FCF framework
 $ cd [PROJECT]
 3. Initialize the sample database<br>
 $ fcfmngr create-db ./fcf-example-planet.js<br>
+$ mysql -u [USER] -p < dbdump.sql
 4. And run<br>
 $ fcfserver server.json
 5. Wait until all modules and packages are installed. When everything is ready, the terminal will display an inscription:<br>
