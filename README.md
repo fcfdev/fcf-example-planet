@@ -1,7 +1,7 @@
 # fcf-example-planet
 An example of using templates in the FCF framework
 
-# How run
+# How to start
 1. Install FCF framework (https://fcf-framework.online/download/fcf/install)
 2. Go to the example directory<br>
 $ cd [PROJECT]
