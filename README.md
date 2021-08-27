@@ -9,9 +9,9 @@ $ cd [PROJECT]
 $ fcfmngr create-db ./fcf-example-planet.js<br>
 4. And run<br>
 $ fcfserver server.json
-5. Wait until all modules and packages are installed. When everything is ready, the terminal will display an inscription:
->> Listening started  with port 8080
->> Listening started :: with port 8080
+5. Wait until all modules and packages are installed. When everything is ready, the terminal will display an inscription:<br>
+>>> Listening started  with port 8080<br>
+>>> Listening started :: with port 8080<br>
 6. Open your browser at localhost:8080
 
 
