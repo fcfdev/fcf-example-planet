@@ -54,6 +54,7 @@
   stars:         fcf.argProg(),
   feq:           60,
   period:        10,
+  pause:         false,
 }
 
 //~TEMPLATE
@@ -70,15 +71,8 @@
       <div class="planet-sun"></div>
     </div>
   </div>
-  @{{ render.template("+earth", {feq: fcf.argRef("feq"), period: fcf.argRef("period") }); }}@
-  <div class="planet-controls-container">
-    <p>
-      <div class="planet-title-control">Period: </div>@{{ render.template("@controls:int-edit", {value: fcf.argRef("period"), min: 1, width: 80})}}@
-    </p>
-    <p>
-      <div class="planet-title-control">Frequency: </div>@{{ render.template("@controls:int-edit", {value: fcf.argRef("feq"), min: 1, width: 80})}}@
-    </p>
-  </div>
+  @{{ render.template("+earth", {feq: fcf.argRef("feq"), period: fcf.argRef("period"), pause: fcf.argRef("pause") }); }}@
+  @{{ render.template("+controls", {feq: fcf.argRef("feq"), period: fcf.argRef("period"), pause: fcf.argRef("pause") }); }}@
 </div>
 
 //~OPTIONS earth
@@ -91,12 +85,30 @@
   fcfClassInner: "planet-earth-container",
   fcfStyleInner: fcf.argVal("z-index: @{{args.topPlanet > 0.5 ? 2 : 0}}@"),
   time:          0,
-  feq:           60,
-  period:        10,
   leftPlanet:    fcf.argVal("@{{(Math.sin(Math.PI * args.time / args.period / 1000 * 2) + 1) / 2 * 0.5 + 0.25}}@"),
   topPlanet:     fcf.argVal("@{{(Math.cos(Math.PI * args.time / args.period / 1000 * 2) + 1) / 2 * 0.5 + 0.25}}@"),
-
 }
 
 //~TEMPLATE earth
 <div class="planet-earth" style="left: @{{100*args.leftPlanet}}@%; top: @{{100*args.topPlanet}}@%;"></div>
+
+//~OPTIONS controls
+{
+  autoUpdate: true,
+}
+
+//~ARGUMENTS controls
+{
+  fcfClassInner: "planet-controls-container",
+}
+
+//~TEMPLATE controls
+<p>
+  <div class="planet-title-control">Period: </div>@{{ render.template("@controls:int-edit", {value: fcf.argRef("period"), min: 1, width: 80})}}@
+</p>
+<p>
+  <div class="planet-title-control">Frequency: </div>@{{ render.template("@controls:int-edit", {value: fcf.argRef("feq"), min: 1, width: 80})}}@
+</p>
+<p>
+  <div class="planet-play-control" fcfEventClick="wrapper.setArg('pause', !wrapper.getArg('pause'))">@{{ args.pause ? " >>> Play <<<" : ">>> Pause <<<" }}@</div>
+</p>
