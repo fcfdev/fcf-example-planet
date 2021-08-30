@@ -1,6 +1,10 @@
 {
   "language": "ja",
   "translations": {
+    "Pause": "一時停止",
+    "Play": "始める",
+    "Frequency": "周波数",
+    "Period": "期間",
     "An example of using templates": "テンプレートの使用例"
   }
 }

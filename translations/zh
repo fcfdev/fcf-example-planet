@@ -1,6 +1,10 @@
 {
   "language": "zh",
   "translations": {
+    "Pause": "暫停",
+    "Play": "開始",
+    "Frequency": "頻率",
+    "Period": "時期",
     "An example of using templates": "使用模板的示例"
   }
 }

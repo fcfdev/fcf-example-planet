@@ -1,6 +1,10 @@
 {
   "language": "ru",
   "translations": {
+    "Pause": "Пауза",
+    "Play": "Пуск",
+    "Frequency": "Частота",
+    "Period": "Период",
     "An example of using templates": "Пример использования шаблонов"
   }
 }

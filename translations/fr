@@ -1,6 +1,10 @@
 {
   "language": "fr",
   "translations": {
+    "Pause": "Pause",
+    "Play": "Début",
+    "Frequency": "La fréquence",
+    "Period": "Période",
     "An example of using templates": "Un exemple d'utilisation de modèles"
   }
 }

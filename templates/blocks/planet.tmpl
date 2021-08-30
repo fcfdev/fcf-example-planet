@@ -104,11 +104,11 @@
 
 //~TEMPLATE controls
 <p>
-  <div class="planet-title-control">Period: </div>@{{ render.template("@controls:int-edit", {value: fcf.argRef("period"), min: 1, width: 80})}}@
+  <div class="planet-title-control">!{{Period}}!: </div>@{{ render.template("@controls:int-edit", {value: fcf.argRef("period"), min: 1, width: 80})}}@
 </p>
 <p>
-  <div class="planet-title-control">Frequency: </div>@{{ render.template("@controls:int-edit", {value: fcf.argRef("feq"), min: 1, width: 80})}}@
+  <div class="planet-title-control">!{{Frequency}}!: </div>@{{ render.template("@controls:int-edit", {value: fcf.argRef("feq"), min: 1, width: 80})}}@
 </p>
 <p>
-  <div class="planet-play-control" fcfEventClick="wrapper.setArg('pause', !wrapper.getArg('pause'))">@{{ args.pause ? " >>> Play <<<" : ">>> Pause <<<" }}@</div>
+  <div class="planet-play-control" fcfEventClick="wrapper.setArg('pause', !wrapper.getArg('pause'))">@{{ args.pause ? ` >>> ${fcf.t("Play")} <<<` : `>>> ${fcf.t("Pause")} <<<` }}@</div>
 </p>
