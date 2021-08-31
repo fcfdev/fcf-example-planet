@@ -12,7 +12,8 @@ fcf.module({
 
       async initialize(){
         await super.initialize()
-        this.timer();
+        if (!this._pause)
+          this.timer();
       }
 
       onArgPause(a_pause){
