@@ -7,20 +7,24 @@ fcf.module({
       constructor(a_initializeOptions){
         super(a_initializeOptions);
         this._lastTime  = undefined;
-        this._pause     = true;
+        this._pause     = this.getArg("pause");
       }
 
-      attach(){
-        if (this._pause && !this.getArg("pause"))
+      async initialize(){
+        await super.initialize()
+        this.timer();
+      }
+
+      onArgPause(a_pause){
+        if (!a_pause && this._pause)
           this.timer();
-        this._pause = this.getArg("pause");
-        return super.attach();
+        this._pause = a_pause;
       }
 
       timer(){
         let self = this;
         setTimeout(()=>{
-          if (self.getArg("pause")){
+          if (this._pause){
             self._lastTime = undefined;
             return;
           }
