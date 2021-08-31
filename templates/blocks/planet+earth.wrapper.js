@@ -7,33 +7,24 @@ fcf.module({
       constructor(a_initializeOptions){
         super(a_initializeOptions);
         this._lastTime  = undefined;
-        this._pause     = this.getArg("pause");
       }
 
       async initialize(){
         await super.initialize()
-        if (!this._pause)
-          this.timer();
-      }
-
-      onArgPause(a_pause){
-        if (!a_pause && this._pause)
-          this.timer();
-        this._pause = a_pause;
+        this.timer();
       }
 
       timer(){
         let self = this;
-        setTimeout(()=>{
-          if (this._pause){
-            self._lastTime = undefined;
-            return;
-          }
+        if (!this.getArg("pause")){
           let time = (new Date()).getTime();
-          if (!this._lastTime)
-            this._lastTime = time - (1 / this.getArg("feq") * 1000);
-          self.setArg("time", self.getArg("time") + (time - this._lastTime));
+          let diff = this._lastTime ?  time - this._lastTime : 1 / this.getArg("feq") * 1000;
+          this.setArg("time", this.getArg("time") + diff);
           this._lastTime = time;
+        } else {
+          self._lastTime = undefined;
+        }
+        setTimeout(()=>{
           self.timer();
         }, 1 / this.getArg("feq") * 1000);
       }
