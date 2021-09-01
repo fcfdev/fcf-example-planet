@@ -22,7 +22,7 @@ fcf.module({
           this.setArg("time", this.getArg("time") + diff);
           this._lastTime = time;
         } else {
-          self._lastTime = undefined;
+          this._lastTime = undefined;
         }
         setTimeout(()=>{
           self.timer();
