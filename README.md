@@ -6,6 +6,9 @@ An example of using templates in the FCF framework
 # Recommendations
 It is recommended to use the latest version of FCF to run the example. As the framework is constantly evolving, the example can use the latest features.
 
+# Requirements
+For the example, a version of the FCF framework is required at least 1.1.40
+
 # How to start
 1. Install FCF framework (https://fcf-framework.online/download/fcf/install)
 2. Go to the example directory<br>
