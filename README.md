@@ -14,7 +14,7 @@ For the example, a version of the FCF framework is required at least 1.1.40
 2. Go to the example directory<br>
 $ cd [PROJECT]
 3. Initialize the sample database<br>
-(If access to the mysql user is performed only from the system superuser, you need to use sudo)
+(If access to the mysql user is performed only from the system superuser, you need to use sudo)<br>
 $ fcfmngr create-db ./fcf-example-planet.js<br>
 $ mysql -u [USER] -p fcf-example-planet < dbdump.sql
 4. And run<br>
