@@ -10,10 +10,10 @@ It is recommended to use the latest version of FCF to run the example. As the fr
 For the example, a version of the FCF framework is required at least 1.1.43
 
 # Description
-A detailed description of the example is on the pages of the official site: https://fcf-framework.online/stepbystep/applications/first-introduction
+A detailed description of the example is on the pages of the official site: https://fcf-framework.tk/stepbystep/applications/first-introduction
 
 # How to start
-1. Install FCF framework (https://fcf-framework.online/download/fcf/install)
+1. Install FCF framework (https://fcf-framework.tk/download/fcf/install)
 2. Go to the example directory<br>
 $ cd [PROJECT]
 3. Initialize the sample database<br>
