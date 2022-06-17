@@ -1,4 +1,23 @@
 {
+  // Server name
+  "serverName": "main",
+
+  // Main server name
+  "mainServer": "main",
+
+  // Server array
+  // If there is only one element in the array (main server), then the port is not listened on.
+  "servers": [
+    {
+      // Server name
+      "name": "main",
+      // Server address
+      "address": "127.0.0.1",
+      // Server port
+      "port": 3778
+    }
+  ],
+
   //en  Number of the local server management port (int)
   //ru  Номер локального порта управления сервером (int)
   "serverControlPort": 3731,
@@ -22,10 +41,6 @@
   //en  User password. Used only for Windows systems
   //ru  Пароль пользователя. Используется только для Windows систем
   "password":        "",
-
-  //en  Server slave state. Runs as master by default (default:false) (boolean)
-  //ru  Состояние подчиненного состояния сервера. По умолчанию запускается как ведущий (default:false) (boolean)
-  "slave": false,
 
   //en  Length of the request queue
   //ru  Длина очереди запросов
@@ -116,6 +131,9 @@
       //ru  Параметры обработчиков
       "handlers": [{
 
+        // Handler name
+        "name": "planet",
+
         //en  Maximum time to wait for a child process to start (sec)
         //ru  Максимальное время ожидания запуска дочернего процесса (сек)
         //"startTimeout": 30,
@@ -152,12 +170,6 @@
         //ru  Массив массивов содержащий массивы опций NDOEJS по каждому процессу
         "nodeOptions": [[], [], [], []],
 
-        //en  Maximum allowable memory size used by a handler process for processes with memory leak protection
-        //en  If there is no limit set to 0 (int MB)
-        //ru  Максимально допустимый размер памяти используемый процессом обработчика для процессов с защитой от утечек памяти
-        //ru  Если ограничения нет равет 0 (int MB)
-        "maxMemoryLeakProtection": 150,
-
         //en  Maximum allowed memory size used by the handler process. If there is no limit set to 0 (int MB)
         //ru  Максимально допустимый размер памяти используемый процессом обработчика. Если ограничения нет равет 0 (int MB)
         "maxMemory": 150,
@@ -166,13 +178,7 @@
         //en  The array is automatically expanded to the size specified in (process+processesLeakProtection)*2, but must contain at least one element (array)
         //ru  Массив портов передачи управляющих сообщений.
         //ru  Массив автоматически дозаполняется до размера указанного в (process+processesLeakProtection)*2, но должен содержать хотябы один элемент (array)
-        "dataPorts": [3070],
-
-        //en  Array of data transfer ports.
-        //en  The array is automatically expanded to the size specified in (process+processesLeakProtection)*2, but must contain at least one element (array)
-        //ru  Массив портов передачи данных.
-        //ru  Массив автоматически дозаполняется до размера указанного в (process+processesLeakProtection)*2, но должен содержать хотябы один элемент (array)
-        "controlPorts": [3570]
+        "dataPorts": []
 
       }]
 
