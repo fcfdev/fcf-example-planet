@@ -30,7 +30,7 @@ fcf.module({
       //
       // Object of hooks for programmatically populated arguments. The function can be asynchronous
       //
-      hooksProgramableArgument: {
+      hooksProgrammableArgument: {
         //
         // Hook of the assembly of a programmatically populated argument created by the fcf.argProg() method with the name ARG_NAME
         // The function can be asynchronous
