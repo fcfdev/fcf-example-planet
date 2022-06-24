@@ -10,7 +10,7 @@ It is recommended to use the latest version of FCF to run the example. As the fr
 For the example, a version of the FCF framework is required at least 1.1.48
 
 # Description
-A detailed description of the example is on the pages of the official site: https://fcf-framework.tk/stepbystep/applications/first-introduction
+A detailed description of the example is on the pages of the official site: https://fcf-framework.mywire.org/stepbystep/applications/first-introduction
 
 # How to start
 1. Install FCF framework (https://fcf-framework.mywire.org/download/fcf/install)
